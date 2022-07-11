@@ -6,6 +6,11 @@ terraform {
     null     = "~> 2.0"
     local    = "~> 1.3"
   }
+  backend "s3" {
+    bucket = "ecrtfbucket"
+    key    = "ecr"
+    region = "us-east-1"
+  }
 }
 provider "aws" {
   region = "us-east-1"
