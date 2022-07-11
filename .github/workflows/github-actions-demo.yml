@@ -14,5 +14,14 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
+      - name: terraform ecr
+        run: |
+          ls
+          export AWS_ACCESS_KEY_ID=AKIAYAYKC3LTOBRSCWKR
+          export AWS_SECRET_ACCESS_KEY=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
+          export AWS_DEFAULT_REGION=us-east-1
+          cd aws/modules/ecr
+          terraform init
+          terraform plan
       - run: echo "🍏 This job's status is ${{ job.status }}."
 
