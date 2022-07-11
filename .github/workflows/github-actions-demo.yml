@@ -28,6 +28,9 @@ jobs:
           terraform plan
       - name: ecr push pull demo
         run: |
+          export AWS_ACCESS_KEY_ID=AKIAYAYKC3LTOBRSCWKR
+          export AWS_SECRET_ACCESS_KEY=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
+          export AWS_DEFAULT_REGION=us-east-1
           aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 551387585254.dkr.ecr.us-east-1.amazonaws.com
           docker tag archmydes:latest 551387585254.dkr.ecr.us-east-1.amazonaws.com/archmydes:latest
           docker build -t archmydes .
