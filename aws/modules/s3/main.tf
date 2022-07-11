@@ -27,3 +27,16 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "archmydesencrypt"
     }
   }
 }
+resource "aws_s3_access_point" "example" {
+  bucket = aws_s3_bucket.archmydes.arn
+  name   = "s3archmydes"
+
+  # VPC must be specified for S3 on Outposts
+  vpc_configuration {
+    vpc_id = aws_vpc.default.id
+  }
+}
+
+resource "aws_vpc" "default" {
+  cidr_block = "172.31.0.0/16"
+}
